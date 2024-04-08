@@ -20,18 +20,21 @@
 #include "CHFlightstickPro.h"
 #include "CHF16CombatStick.h"
 #include "GenericJoystick.h"
-#include "GrIP.h"
-#include "Logitech.h"
-#include "Sidewinder.h"
-#include "ThrustMaster.h"
+// #include "GrIP.h"
+// #include "Logitech.h"
+// #include "Sidewinder.h"
+// #include "ThrustMaster.h"
 
 static Joystick *createJoystick() {
 
-  const auto sw1 = DigitalInput<14, true>{};
-  const auto sw2 = DigitalInput<15, true>{};
-  const auto sw3 = DigitalInput<20, true>{};
-  const auto sw4 = DigitalInput<21, true>{};
-
+  // const auto sw1 = DigitalInput<14, true>{};
+  // const auto sw2 = DigitalInput<15, true>{};
+  // const auto sw3 = DigitalInput<20, true>{};
+  // const auto sw4 = DigitalInput<21, true>{};
+  const auto sw1 = 1;
+  const auto sw2 = 1;
+  const auto sw3 = 0;
+  const auto sw4 = 1;
   // Give some time to setup the input
   delay(1);
 
@@ -46,16 +49,16 @@ static Joystick *createJoystick() {
       return new GenericJoystick<4,4>;
     case 0b0100:
       return new CHFlightstickPro;
-    case 0b0101:
-      return new ThrustMaster;
+    // case 0b0101:
+      // return new ThrustMaster;
     case 0b0110:
       return new CHF16CombatStick;
-    case 0b0111:
-      return new Sidewinder;
-    case 0b1000:
-      return new GrIP;
-    case 0b1001:
-      return new Logitech;
+    // case 0b0111:
+      // return new Sidewinder;
+    // case 0b1000:
+      // return new GrIP;
+    // case 0b1001:
+      // return new Logitech;
     default:
       return new GenericJoystick<2,2>;
   }
